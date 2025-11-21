@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    /* Aumenta la altura mínima para permitir scroll */
+    min-height: 200vh;
+}
+.front-box,
+.back-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    perspective: 800px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+.front-box{ z-index: 2; }
+.back-box{ z-index: 1; }
+.front,
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    animation-timeline: scroll(root);
+}
+.front-box .front{
+    background-image: url(http://cdn.josetxu.com/img/vertigo-front.png);
+    background-position: right center;
+    animation-name: go-front;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+}
+.back-box .back{
+    background-image: url(http://cdn.josetxu.com/img/vertigo-back.jpg);
+    background-position: center center;
+    animation-name: go-back;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+}
+@keyframes go-front{
+    0%{
+        transform: translateX(0);
+        filter: blur(1px);
+    }
+    100%{
+        transform: translateX(100px);
+        filter: blur(0);
+    }
+    
+
+}
+@keyframes go-back{
+    0%{
+        transform: translateX(0);
+        filter: blur(2px);
+    }
+    100%{
+        transform: scale(1.3);
+        filter: blur(6px);
+    }
+}
